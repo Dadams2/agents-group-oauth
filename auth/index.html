@@ -25,8 +25,10 @@ window.onload = async () => {
     return;
   }
 
+  // this is bad, but github pages does weird domains
+  const domain = window.location.href;
   const authorizationParams = {
-    redirect_uri: `https://${window.location.href}/auth/`,
+    redirect_uri: `https://${domain}/auth/`,
     audience: `https://${authSettings.domain}/api/v2/`,
     scope: "read:current_user read:user_idp_tokens update:current_user_metadata",
     prompt: "login",
@@ -34,7 +36,7 @@ window.onload = async () => {
   const client = await auth0spa.createAuth0Client({authorizationParams, ...authSettings});  
   if (query.includes("code=") && query.includes("state=")) {
     await client.handleRedirectCallback();
-    window.history.replaceState({}, document.title, "/auth/");
+    window.history.replaceState({}, domain, "/auth/");
     
   } else if (query.includes("error=") && query.includes("error_description=")) {
     const params = new URLSearchParams(new URL(window.location.href).search);
