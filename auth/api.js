@@ -5,7 +5,7 @@ export function login(redirect) {
   } else {
     localStorage.setItem("auth:redirect", window.location.href);
   }
-  window.location.href = "/auth/";
+  window.location.href = window.location.href + "auth/";
 }
 
 export function logout(redirect) {
