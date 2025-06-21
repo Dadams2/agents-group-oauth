@@ -28,7 +28,7 @@ window.onload = async () => {
   // this is bad, but github pages does weird domains
   const domain = window.location.href;
   const authorizationParams = {
-    redirect_uri: `https://${domain}/auth/`,
+    redirect_uri: `https://${domain}`,
     audience: `https://${authSettings.domain}/api/v2/`,
     scope: "read:current_user read:user_idp_tokens update:current_user_metadata",
     prompt: "login",
