@@ -26,7 +26,7 @@ window.onload = async () => {
   }
 
   const authorizationParams = {
-    redirect_uri: `https://${window.location.hostname}/auth/`,
+    redirect_uri: `https://${window.location.href}/auth/`,
     audience: `https://${authSettings.domain}/api/v2/`,
     scope: "read:current_user read:user_idp_tokens update:current_user_metadata",
     prompt: "login",
